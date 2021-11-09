@@ -1,5 +1,6 @@
 import React from 'react';
 import { Team } from '../../../models/Team';
+import TeamDetail from './TeamDetail';
 
 const Leaderboard: React.FC<{ data: Team[] }> = (props) => {
   return (
@@ -9,8 +10,9 @@ const Leaderboard: React.FC<{ data: Team[] }> = (props) => {
         <span>Clicks</span>
       </header>
       <ul>
-        <li>Team 1</li>
-        <li>Team 2</li>
+        {props.data.map((team) => {
+          return <TeamDetail team={team} />;
+        })}
       </ul>
     </section>
   );
