@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 type SubmitEvent = React.FormEvent<HTMLFormElement>;
 
-const TeamForm: React.FC<{ onFormSubmit: (a: string) => never }> = (props) => {
+// { onFormSubmit: (a: string) => void }
+
+const TeamForm = () => {
   const [inputValue, setInputValue] = useState<string>('');
 
   const inputChangeHandler = (e: InputEvent) => {
     const inputValue = e.currentTarget.value;
+
+    // might add more validation
 
     if (typeof inputValue === 'string' && inputValue.length > 0) {
       setInputValue(inputValue.trim());
@@ -16,8 +20,8 @@ const TeamForm: React.FC<{ onFormSubmit: (a: string) => never }> = (props) => {
 
   const formSubmitHandler = (e: SubmitEvent) => {
     e.preventDefault();
-    props.onFormSubmit(inputValue);
     setInputValue('');
+    // dispatch logic
   };
 
   // mozna zmenit placeholder, co myslis, hochu
