@@ -8,8 +8,8 @@ export const addTeam = (teamObj: Team) => {
   };
 };
 
-export const dispatchClick = () => {
+export const dispatchClick = (teamId: string | any) => {
   return (dispatch: Dispatch) => {
-    dispatch({ type: TeamEnum.CLICK });
+    dispatch({ type: TeamEnum.CLICK, payload: teamId });
   };
 };

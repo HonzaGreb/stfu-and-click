@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loginActionCreators } from '../../store';
+import { loginActionCreators, teamActionCreators } from '../../store';
 import { Session } from '../../models/Session';
 
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
@@ -11,6 +12,8 @@ const TeamForm = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const dispatch = useDispatch();
   const { login } = bindActionCreators(loginActionCreators, dispatch);
+  const { addTeam } = bindActionCreators(teamActionCreators, dispatch);
+  const navigate = useNavigate()
 
   const inputChangeHandler = (e: InputEvent) => {
     const inputValue = e.currentTarget.value;
@@ -33,10 +36,13 @@ const TeamForm = () => {
   const formSubmitHandler = (e: SubmitEvent) => {
     e.preventDefault();
     const randomSessionId = generateSessionId(7);
-
     const sessionData: Session = { team: inputValue, session: randomSessionId };
-    setInputValue('');
+    navigate(`/${randomSessionId}`)
+
+    addTeam({ name: inputValue, clicks: { yourClicks: 0, teamClicks: 0 } });
     login(sessionData);
+
+    setInputValue('');
   };
 
   // mozna zmenit placeholder, co myslis, hochu
