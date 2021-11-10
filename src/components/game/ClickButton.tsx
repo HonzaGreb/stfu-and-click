@@ -1,10 +1,16 @@
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { teamActionCreators } from '../../store';
+
 const ClickButton = () => {
-    const btnClickHandler = () => {
-        // btn functionality
-        console.log('clicked')
-    }
+  const dispatch = useDispatch();
+  const { dispatchClick } = bindActionCreators(teamActionCreators, dispatch);
 
-    return <button onClick={btnClickHandler}>Click!</button>
-}
+  const btnClickHandler = () => {
+    dispatchClick();
+  };
 
-export default ClickButton
+  return <button onClick={btnClickHandler}>Click!</button>;
+};
+
+export default ClickButton;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Team } from '../../../models/Team';
+import { OrderedTeam } from '../../../models/OrderedTeam';
 import TeamDetail from './TeamDetail';
 
-const Leaderboard: React.FC<{ data: Team[] }> = (props) => {
+const Leaderboard: React.FC<{ data: OrderedTeam[] }> = (props) => {
   return (
     <section>
       <header>
@@ -11,7 +11,7 @@ const Leaderboard: React.FC<{ data: Team[] }> = (props) => {
       </header>
       <ul>
         {props.data.map((team) => {
-          return <TeamDetail team={team} />;
+          return <TeamDetail team={team} key={team.key} />;
         })}
       </ul>
     </section>

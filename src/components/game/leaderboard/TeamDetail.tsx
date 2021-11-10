@@ -1,15 +1,15 @@
 import React from 'react';
-import { Team } from '../../../models/Team';
+import { OrderedTeam } from '../../../models/OrderedTeam';
 
-const TeamDetail: React.FC<{ team: Team }> = (props) => {
-  const { order, name, clicks } = props.team;
+const TeamDetail: React.FC<{ team: OrderedTeam }> = (props) => {
+  const { name, clicks, order } = props.team;
 
   return (
     <li>
       <span>{order}</span>
       <div>
         <span>{name}</span>
-        <span>{clicks}</span>
+        <span>{clicks.teamClicks}</span>
       </div>
     </li>
   );
