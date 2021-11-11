@@ -1,1 +1,287 @@
+/* header */
 
+.header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  background-color: var(--primary);
+}
+
+.header span {
+  user-select: none;
+}
+
+.header nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--light);
+  padding: 0 20px;
+}
+
+.header nav span {
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+/* game */
+
+.game {
+  position: absolute;
+  width: 500px;
+  height: 600px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 5px solid var(--primary);
+  border-radius: 15px;
+  bottom: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.game-info {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* login form */
+
+.login-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+}
+
+.login-form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50%;
+}
+
+.login-form div label {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+#login-input {
+  padding: 5px 20px;
+  border: 2px solid var(--grey);
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+  transition: all 100ms;
+}
+
+#login-input:focus {
+  background-color: var(--lightgrey);
+}
+
+.login-form button {
+  border-radius: 10px;
+  padding: 0 40px;
+}
+
+.name-taken {
+  position: absolute;
+  font-style: italic;
+  top: 80px;
+}
+
+/* BTNS */
+
+.btn {
+  background-color: var(--primary);
+  border: none;
+  color: var(--light);
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 400;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.btn:hover {
+  transform: scale(0.99);
+}
+
+.btn:hover:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  background-color: var(--primary-light);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* click button */
+
+.click-btn {
+  width: 100%;
+  padding: 25px 0;
+}
+
+/* reset game btn */
+
+.reset-btn,
+.create-btn {
+  background-color: var(--light);
+  padding: 10px 20px;
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.create-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* leaderboard */
+
+.leaderboard {
+  position: absolute;
+  width: 100%;
+  top: 250px;
+}
+
+.leaderboard header {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--grey);
+  padding: 0 20px;
+}
+
+.leaderboard-teams {
+  max-height: 280px;
+  overflow-y: scroll;
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+  scrollbar-width: none; /* hide scrollbar */
+  -ms-overflow-style: none;
+}
+
+/* team detail */
+
+.team-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  background-color: var(--primary-light);
+  padding: 10px 20px;
+  font-weight: 600;
+}
+
+.team-detail div {
+  display: flex;
+  align-items: center;
+}
+
+.order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary);
+  color: var(--light);
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.team-detail.player-team {
+  background-color: var(--primary);
+  color: var(--light);
+  padding: 20px;
+  font-size: 1.8rem;
+}
+
+.team-detail.player-team .order {
+  width: 48px;
+  height: 48px;
+  background-color: var(--light);
+  color: var(--primary);
+  margin-right: 25px;
+}
+
+/* clicks details */
+
+.clicks-details {
+  display: flex;
+  position: absolute;
+  top: 140px;
+}
+
+.clicks-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px;
+}
+
+.clicks-detail span {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* now clicking */
+
+.now-clicking {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.now-clicking span {
+  font-weight: 700;
+}
+
+/* url */
+
+.url {
+  text-align: center;
+}
+
+.url span {
+  padding: 5px 15px;
+  background-color: var(--lightgrey);
+  border-radius: 5px;
+  border: 1px solid var(--grey);
+}
+
+/* not found */
+
+.not-found {
+  text-align: center;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-btn {
+  text-decoration: none;
+  padding: 10px 30px;
+  font-size: 1.5rem;
+}

@@ -7,16 +7,28 @@ const initialState: Login = {
   isLoggedIn: false,
 };
 
-const loginReducer = (state: Login = initialState, action: Action) => {
+const storedLogin: Login = JSON.parse(localStorage.getItem('login')!);
+
+const loginReducer = (
+  state: Login = storedLogin || initialState,
+  action: Action
+) => {
   switch (action.type) {
-    case LoginEnum.LOGIN:
-      return {
+    case LoginEnum.LOGIN: {
+      const updatedLogin = {
         name: action.payload.team,
         session: action.payload.session,
         isLoggedIn: true,
       };
-    case LoginEnum.LOGOUT:
-      return { name: null, session: null, isLoggedIn: false };
+
+      localStorage.setItem('login', JSON.stringify(updatedLogin));
+      return updatedLogin;
+    }
+    case LoginEnum.LOGOUT: {
+      const updatedLogin = { name: null, session: null, isLoggedIn: false };
+      localStorage.setItem('login', JSON.stringify(updatedLogin));
+      return updatedLogin;
+    }
     default:
       return state;
   }

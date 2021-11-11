@@ -3,6 +3,7 @@ import { Team } from '../../models/Team';
 export enum TeamEnum {
   ADD = 'ADD_TEAM',
   CLICK = 'CLICK',
+  RESET = 'RESET'
 }
 
 export interface AddTeam {
@@ -15,4 +16,8 @@ export interface Click {
   payload: string;
 }
 
-export type Actions = AddTeam | Click;
+export interface Reset {
+  type: TeamEnum.RESET;
+}
+
+export type Actions = AddTeam | Click | Reset;

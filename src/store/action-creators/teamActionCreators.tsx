@@ -13,3 +13,9 @@ export const dispatchClick = (teamId: string | any) => {
     dispatch({ type: TeamEnum.CLICK, payload: teamId });
   };
 };
+
+export const resetTeams = () => {
+  return (dispatch: Dispatch) => {
+    dispatch({type: TeamEnum.RESET})
+  }
+}

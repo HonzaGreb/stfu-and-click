@@ -1,20 +1,17 @@
 import { useSelector } from 'react-redux';
-import { Route, Routes, Navigate } from 'react-router-dom';
 
 import { Team } from '../../models/Team';
 import { Fragment } from 'react';
 import { State } from '../../store/reducers';
 
-import GameContent from './GameContent';
-import ClicksDetails from './ClicksDetails';
-import ClickButton from './ClickButton';
-import TeamForm from './TeamForm';
-import TeamNotFound from './TeamNotFound';
+import GameTop from './game-top/GameTop';
+import Leaderboard from './leaderboard/Leaderboard';
+import GameInfo from './game-info/GameInfo';
 
 const Game = () => {
   const teams = useSelector((state: State) => state.team);
-  const isLoggedIn = useSelector((state: State) => state.login.isLoggedIn);
-  const playerTeamId = useSelector((state: State) => state.login.name);
+  const login = useSelector((state: State) => state.login);
+  const { name, session } = login;
 
   const findArrayItem = (arr: any[], searchParams: (a1: any) => boolean) => {
     const array = [...arr];
@@ -22,29 +19,20 @@ const Game = () => {
   };
 
   const teamSearchParams = (team: Team) => {
-    return team.name === playerTeamId;
+    return team.name === name;
   };
 
   const playerTeam: Team = findArrayItem(teams, teamSearchParams);
 
   return (
-    <section>
-      <Routes>
-        <Route path="*" element={<Navigate replace to="/login" />} />
-        <Route path="/login" element={<TeamForm />} />
-        <Route
-          path={`/:${playerTeamId}`}
-          element={
-            <Fragment>
-              <ClickButton />
-              {isLoggedIn && <ClicksDetails team={playerTeam} />}
-            </Fragment>
-          }
-        />
-        <Route path="*" element={<TeamNotFound />} />
-      </Routes>
-      <GameContent />
-    </section>
+    <Fragment>
+      <GameInfo login={login} />
+      <section className="game">
+        <GameTop session={session!} team={playerTeam} />
+        <Leaderboard teams={teams} />
+        <p>Want to be top? STFU and click!</p>
+      </section>
+    </Fragment>
   );
 };
 
