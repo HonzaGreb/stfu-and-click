@@ -25,10 +25,11 @@
     "web-vitals": "^1.0.1",
     "webpack": "^5.64.0",
     "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^3.11.1",
     "yarn": "^1.22.17"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "webpack serve --inline --content-base ./public",
     "build": "webpack",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -14,7 +14,6 @@ const Header = () => {
     logout();
     resetTeams();
 
-    //imperativni navigace neni idealni
     navigate('/login');
   };
 
