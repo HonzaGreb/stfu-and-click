@@ -2,6 +2,7 @@ import { AuthObject } from '../../models/Auth'
 import { Action, AuthActionsEnum } from '../actions/AuthActions'
 
 const initialState: AuthObject = {
+  kind: '',
   idToken: '',
   email: '',
   refreshToken: '',
@@ -12,16 +13,14 @@ const initialState: AuthObject = {
 const authReducer = (state: AuthObject | null = initialState, action: Action) => {
   switch (action.type) {
     case AuthActionsEnum.STORE: {
-      return action.payload
-    }
-    case AuthActionsEnum.VERIFY: {
-      return state
+      const storedData = { ...action.payload }
+      return storedData
     }
     case AuthActionsEnum.CLEAR: {
       return initialState
     }
     default: {
-      return initialState
+      return state
     }
   }
 }

@@ -2,7 +2,6 @@ import { AuthObject } from '../../models/Auth'
 
 export enum AuthActionsEnum {
   STORE = 'STORE',
-  VERIFY = 'VERIFY',
   CLEAR = 'CLEAR',
 }
 
@@ -11,13 +10,8 @@ interface StoreAction {
   payload: AuthObject
 }
 
-interface VerifyAction {
-  type: AuthActionsEnum.VERIFY
-  payload: string
-}
-
 interface ClearAction {
   type: AuthActionsEnum.CLEAR
 }
 
-export type Action = StoreAction | VerifyAction | ClearAction
+export type Action = StoreAction | ClearAction

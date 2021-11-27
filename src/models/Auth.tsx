@@ -1,4 +1,5 @@
 export type AuthObject = {
+  kind: string
   idToken: string
   email: string
   refreshToken: string
